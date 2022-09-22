@@ -2,6 +2,8 @@ import axios, { Axios } from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
+import LocationItem from "./components/LocationItem";
+import ResidentsTarjet from "./components/ResidentsTarjet";
 
 function App() {
   const [location, setLocation] = useState({});
@@ -29,9 +31,13 @@ function App() {
       <br />
       <input type="text" value={typeId} onChange={(e) => setTypeId(e.target.value)}/>
       <button onClick={seachLocation}>Search</button>
-      {location.residents?.map(charters => (
-        <li key={charters}>{charters}</li>
+      <ul className="container">
+      {location.residents?.map(characters => (
+        // <LocationItem endpoint={charters} key={charters}/>
+        <ResidentsTarjet characterUrl={characters} key={characters}/>
       ))}
+      </ul>
+      
     </div>
   );
 }
